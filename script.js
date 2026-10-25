@@ -1,4 +1,4 @@
-// Database with proper cover shapes and rounded pricing
+// Database with shape property, local cover paths, rounded pricing, and bundle separate options
 const gamesData = [
     // Gen 1 (Game Boy - Square)
     { id: 'red', name: 'Pokémon Red', gen: 1, shape: 'square', cover: 'covers/red.jpg', prices: { loose: 63, cib: 392 } },
@@ -44,24 +44,24 @@ const gamesData = [
     { id: 'letsgo_pikachu', name: "Pokémon: Let's Go, Pikachu!", gen: 7, shape: 'tall', cover: 'covers/letsgo_pikachu.jpg', prices: { loose: 30, cib: 32, new: 60 } },
     { id: 'letsgo_eevee', name: "Pokémon: Let's Go, Eevee!", gen: 7, shape: 'tall', cover: 'covers/letsgo_eevee.jpg', prices: { loose: 31, cib: 35, new: 60 } },
 
-    // Gen 8 (Switch - Tall)
+    // Gen 8 (Switch - Tall, with BDSP bundle having Separate option)
     { id: 'sword', name: 'Pokémon Sword', gen: 8, shape: 'tall', cover: 'covers/sword.jpg', prices: { loose: 28, cib: 34, new: 44 } },
     { id: 'shield', name: 'Pokémon Shield', gen: 8, shape: 'tall', cover: 'covers/shield.jpg', prices: { loose: 31, cib: 35, new: 52 } },
     { id: 'brilliant_diamond', name: 'Pokémon Brilliant Diamond', gen: 8, shape: 'tall', cover: 'covers/brilliant_diamond.jpg', prices: { loose: 35, cib: 38, new: 41 } },
     { id: 'shining_pearl', name: 'Pokémon Shining Pearl', gen: 8, shape: 'tall', cover: 'covers/shining_pearl.jpg', prices: { loose: 32, cib: 34, new: 40 } },
-    { id: 'bdsp_double', name: 'BDSP Double Pack', gen: 8, shape: 'tall', cover: 'covers/bdsp_double.jpg', prices: { loose: 86, cib: 87, new: 105 } },
+    { id: 'bdsp_double', name: 'BDSP Double Pack', gen: 8, shape: 'tall', cover: 'covers/bdsp_double.jpg', prices: { loose: 86, cib: 87, new: 105, separate: 77 } },
 
-    // Gen 9 (Switch - Tall)
+    // Gen 9 (Switch - Tall, with Scarlet/Violet bundle having Separate option)
     { id: 'scarlet', name: 'Pokémon Scarlet', gen: 9, shape: 'tall', cover: 'covers/scarlet.jpg', prices: { loose: 32, cib: 35, new: 40 } },
     { id: 'violet', name: 'Pokémon Violet', gen: 9, shape: 'tall', cover: 'covers/violet.jpg', prices: { loose: 38, cib: 40, new: 45 } },
-    { id: 'sc_vi_double', name: 'Scarlet & Violet Double Pack', gen: 9, shape: 'tall', cover: 'covers/sc_vi_double.jpg', prices: { loose: 83, cib: 88, new: 98 } }
+    { id: 'sc_vi_double', name: 'Scarlet & Violet Double Pack', gen: 9, shape: 'tall', cover: 'covers/sc_vi_double.jpg', prices: { loose: 83, cib: 88, new: 98, separate: 70 } }
 ];
 
 // Load progress from browser storage
-let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v10')) || {};
+let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v11')) || {};
 
 function saveCollection() {
-    localStorage.setItem('pokemonTrackerDB_v10', JSON.stringify(collection));
+    localStorage.setItem('pokemonTrackerDB_v11', JSON.stringify(collection));
     updateSummary();
 }
 
@@ -99,29 +99,55 @@ function showView(viewId) {
 function updateSummary() {
     let totalItems = 0;
     let collectedItems = 0;
-    const missingList = document.getElementById('missing-list');
-    missingList.innerHTML = '';
+    const masterGrid = document.getElementById('master-grid');
+    masterGrid.innerHTML = '';
 
     gamesData.forEach(game => {
-        let gameHasUnowned = false;
+        let gameAllCollected = true;
         
         Object.keys(game.prices).forEach(condition => {
             totalItems++;
             const itemKey = `${game.id}_${condition}`;
-            
             if (collection[itemKey]) {
                 collectedItems++;
             } else {
-                gameHasUnowned = true;
+                gameAllCollected = false;
             }
         });
 
-        // Display ONLY the game name once on the homepage if any variant is missing
-        if (gameHasUnowned) {
-            const li = document.createElement('li');
-            li.textContent = game.name;
-            missingList.appendChild(li);
+        // Create card for master overview grid
+        const card = document.createElement('div');
+        card.className = `game-card ${gameAllCollected ? 'fully-collected' : ''}`;
+        card.onclick = () => loadGeneration(game.gen);
+        card.style.cursor = 'pointer';
+
+        let conditionsSummary = '';
+        Object.entries(game.prices).forEach(([cond, price]) => {
+            const itemKey = `${game.id}_${cond}`;
+            const isChecked = collection[itemKey] || false;
+            if (isChecked) {
+                conditionsSummary += `<span style="font-size: 0.75em; background: var(--mint); padding: 2px 6px; border-radius: 4px; font-weight: bold;">${cond.toUpperCase()} ✓</span> `;
+            }
+        });
+
+        if (!conditionsSummary) {
+            conditionsSummary = `<span style="font-size: 0.8em; color: #718096;">None collected yet</span>`;
         }
+
+        card.innerHTML = `
+            <div class="cover-wrapper">
+                <img src="${game.cover}" alt="${game.name}" class="cover-art ${game.shape}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Cover'">
+                <div class="collected-badge">COLLECTED</div>
+            </div>
+            <div class="game-info">
+                <h3>${game.name}</h3>
+                <div style="font-size: 0.85em; color: var(--lilac); margin-bottom: 6px; font-weight: 600;">Gen ${game.gen}</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                    ${conditionsSummary}
+                </div>
+            </div>
+        `;
+        masterGrid.appendChild(card);
     });
 
     document.getElementById('collected-stat').textContent = `Items Owned: ${collectedItems}`;
@@ -146,9 +172,11 @@ function loadGeneration(gen) {
             const itemKey = `${game.id}_${cond}`;
             const isChecked = collection[itemKey] || false;
             
+            const displayLabel = cond === 'separate' ? 'SEPARATE' : cond.toUpperCase();
+            
             conditionsHTML += `
                 <div class="condition-item ${isChecked ? 'owned' : ''}">
-                    <span class="condition-label">${cond.toUpperCase()}:</span>
+                    <span class="condition-label">${displayLabel}:</span>
                     <span class="price">$${price}</span>
                     <input type="checkbox" ${isChecked ? 'checked' : ''} 
                            onchange="toggleCondition('${itemKey}', this)">
@@ -157,7 +185,9 @@ function loadGeneration(gen) {
         });
 
         card.innerHTML = `
-            <img src="${game.cover}" alt="${game.name}" class="cover-art ${game.shape}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Cover'">
+            <div class="cover-wrapper">
+                <img src="${game.cover}" alt="${game.name}" class="cover-art ${game.shape}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Cover'">
+            </div>
             <div class="game-info">
                 <h3>${game.name}</h3>
                 <div class="conditions-list">
