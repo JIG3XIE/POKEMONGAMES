@@ -113,15 +113,34 @@ h2, h3 {
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
     border-left: 6px solid var(--golden-yellow);
     transition: all 0.2s ease;
 }
 
-.cover-art {
-    width: 80px;
-    height: 100px;
+/* Console Shape Styling for Covers */
+.cover-art.square {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--lavender);
+}
+
+.cover-art.rect {
+    width: 75px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--lavender);
+}
+
+.cover-art.tall {
+    width: 68px;
+    height: 120px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -134,7 +153,7 @@ h2, h3 {
 
 .game-info h3 {
     margin: 0 0 10px 0;
-    font-size: 1.15em;
+    font-size: 1.1em;
     color: var(--text-dark);
     text-align: left;
 }
@@ -142,7 +161,7 @@ h2, h3 {
 .conditions-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .condition-item {
@@ -150,9 +169,9 @@ h2, h3 {
     align-items: center;
     justify-content: space-between;
     background-color: #f8fafc;
-    padding: 6px 10px;
+    padding: 5px 10px;
     border-radius: 8px;
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 
 .condition-item.owned {
@@ -170,8 +189,8 @@ h2, h3 {
 }
 
 input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
     accent-color: var(--teal);
 }
