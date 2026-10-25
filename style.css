@@ -99,6 +99,13 @@ h2, h3 {
     text-align: center;
 }
 
+.subtitle {
+    text-align: center;
+    color: var(--lilac);
+    margin-bottom: 25px;
+    font-size: 0.95em;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -117,9 +124,40 @@ h2, h3 {
     gap: 16px;
     border-left: 6px solid var(--golden-yellow);
     transition: all 0.2s ease;
+    position: relative;
 }
 
-/* Console Shape Styling - using 'contain' so the full image is shown without cropping */
+/* Cover Wrapper with Collection Badge Overlay */
+.cover-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.collected-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(158, 217, 204, 0.88);
+    color: #1a5c4e;
+    font-weight: 800;
+    font-size: 0.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 4px;
+}
+
+.game-card.fully-collected .collected-badge {
+    opacity: 1;
+}
+
+/* Console Shape Styling - using contain so full image is shown without cropping */
 .cover-art.square {
     width: 85px;
     height: 85px;
@@ -196,23 +234,4 @@ input[type="checkbox"] {
     height: 16px;
     cursor: pointer;
     accent-color: var(--teal);
-}
-
-#missing-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-#missing-list li {
-    background-color: var(--lavender);
-    padding: 12px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
