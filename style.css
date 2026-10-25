@@ -120,14 +120,23 @@ h2, h3 {
     display: flex;
     align-items: center;
     gap: 16px;
-    border-left: 6px solid var(--golden-yellow);
+    border-left: 6px solid #cbd5e0;
     transition: all 0.2s ease;
     cursor: pointer;
 }
 
+/* Missing games are dimmed out so they look uncollected */
+.game-card.is-missing {
+    opacity: 0.5;
+    background-color: #fafafc;
+}
+
+/* Owned games pop with bright mint coloring and a solid highlight */
 .game-card.has-owned {
-    background-color: #f4fbf9;
-    border-left-color: var(--mint);
+    opacity: 1;
+    background-color: #e6f7f2;
+    border-left-color: var(--teal);
+    box-shadow: 0 6px 16px rgba(96, 188, 177, 0.2);
 }
 
 /* Console Shape Styling with full image contain */
@@ -175,17 +184,17 @@ h2, h3 {
 .status-indicator {
     font-size: 0.85em;
     font-weight: 700;
-    color: var(--lilac);
-    margin-bottom: 8px;
-    background-color: #f0edf8;
+    color: #718096;
+    margin-bottom: 6px;
+    background-color: #edf2f7;
     display: inline-block;
     padding: 3px 8px;
     border-radius: 6px;
 }
 
 .game-card.has-owned .status-indicator {
-    background-color: var(--mint);
-    color: #1a5c4e;
+    background-color: var(--teal);
+    color: white;
 }
 
 .conditions-list {
