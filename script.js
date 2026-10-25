@@ -1,4 +1,3 @@
-// Database organized by Generation 1 through 9 with local cover paths and rounded pricing
 const gamesData = [
     // Gen 1
     { id: 'red', name: 'Pokémon Red', gen: 1, cover: 'covers/red.jpg', prices: { loose: 63, cib: 392 } },
@@ -57,11 +56,10 @@ const gamesData = [
     { id: 'sc_vi_double', name: 'Scarlet & Violet Double Pack', gen: 9, cover: 'covers/sc_vi_double.jpg', prices: { loose: 83, cib: 88, new: 98 } }
 ];
 
-// Load progress from browser storage
-let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v7')) || {};
+let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v8')) || {};
 
 function saveCollection() {
-    localStorage.setItem('pokemonTrackerDB_v7', JSON.stringify(collection));
+    localStorage.setItem('pokemonTrackerDB_v8', JSON.stringify(collection));
     updateSummary();
 }
 
@@ -73,10 +71,10 @@ function init() {
 
 function setupNav() {
     const genNav = document.getElementById('gen-buttons');
-    const gens = [...new Set(gamesData.map(g => g.gen))].sort((a, b) => a - b);
-    
     genNav.innerHTML = '';
-
+    
+    const gens = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    
     gens.forEach(gen => {
         const btn = document.createElement('button');
         btn.textContent = `Gen ${gen}`;
