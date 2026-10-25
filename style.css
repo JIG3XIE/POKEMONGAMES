@@ -95,7 +95,8 @@ button:hover {
 }
 
 #value-stat {
-    background-color: var(--golden-yellow);
+    background-color: var(--sky-blue);
+    color: white;
 }
 
 h2, h3 {
