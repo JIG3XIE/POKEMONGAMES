@@ -1,5 +1,5 @@
 :root {
-    /* Colors extracted from Untitled design (4).png */
+    /* Palette from image */
     --mint: #9ed9cc;
     --soft-pink: #eba4cd;
     --pale-yellow: #fbf1d4;
@@ -10,16 +10,16 @@
     --lilac: #9f88bd;
     --salmon: #f49b9c;
     
-    --text-dark: #333333;
+    --text-dark: #2d3748;
     --bg-white: #ffffff;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background-color: var(--pale-yellow);
     color: var(--text-dark);
     margin: 0;
-    padding: 20px;
+    padding: 24px;
 }
 
 header {
@@ -30,7 +30,7 @@ header {
 h1 {
     color: var(--lilac);
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 nav {
@@ -38,20 +38,20 @@ nav {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 button {
     background-color: var(--sky-blue);
     border: none;
-    padding: 10px 25px;
+    padding: 10px 20px;
     border-radius: 20px;
     color: white;
-    font-weight: bold;
-    font-size: 1em;
+    font-weight: 700;
+    font-size: 0.95em;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
 }
 
 button:hover {
@@ -71,18 +71,18 @@ button:hover {
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
 .stat-box {
-    padding: 25px;
-    border-radius: 15px;
-    font-size: 1.4em;
+    padding: 20px 30px;
+    border-radius: 16px;
+    font-size: 1.3em;
     font-weight: bold;
-    min-width: 200px;
+    min-width: 180px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     color: var(--text-dark);
 }
 
@@ -101,7 +101,7 @@ h2, h3 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -109,37 +109,69 @@ h2, h3 {
 
 .game-card {
     background: var(--bg-white);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 8px solid var(--golden-yellow);
-    transition: opacity 0.3s;
+    align-items: flex-start;
+    gap: 16px;
+    border-left: 6px solid var(--golden-yellow);
+    transition: all 0.2s ease;
 }
 
-.game-card.collected {
-    opacity: 0.6;
-    border-left-color: var(--mint);
-    background-color: #f7fdfb;
+.cover-art {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--lavender);
+}
+
+.game-info {
+    flex-grow: 1;
 }
 
 .game-info h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.2em;
+    margin: 0 0 10px 0;
+    font-size: 1.15em;
     color: var(--text-dark);
     text-align: left;
 }
 
+.conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.condition-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8fafc;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+.condition-item.owned {
+    background-color: var(--mint);
+    color: var(--text-dark);
+}
+
+.condition-label {
+    font-weight: 600;
+}
+
 .price {
     color: var(--lilac);
-    font-weight: bold;
-    font-size: 1em;
+    font-weight: 700;
 }
 
 input[type="checkbox"] {
-    transform: scale(1.8);
+    width: 18px;
+    height: 18px;
     cursor: pointer;
     accent-color: var(--teal);
 }
@@ -148,17 +180,17 @@ input[type="checkbox"] {
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
 #missing-list li {
     background-color: var(--lavender);
-    padding: 15px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 12px;
     text-align: center;
-    font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
