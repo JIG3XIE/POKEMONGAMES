@@ -1,4 +1,3 @@
-// Database with shape property, local cover paths, rounded pricing, and bundle separate options
 const gamesData = [
     // Gen 1 (Game Boy - Square)
     { id: 'red', name: 'Pokémon Red', gen: 1, shape: 'square', cover: 'covers/red.jpg', prices: { loose: 63, cib: 392 } },
@@ -44,24 +43,23 @@ const gamesData = [
     { id: 'letsgo_pikachu', name: "Pokémon: Let's Go, Pikachu!", gen: 7, shape: 'tall', cover: 'covers/letsgo_pikachu.jpg', prices: { loose: 30, cib: 32, new: 60 } },
     { id: 'letsgo_eevee', name: "Pokémon: Let's Go, Eevee!", gen: 7, shape: 'tall', cover: 'covers/letsgo_eevee.jpg', prices: { loose: 31, cib: 35, new: 60 } },
 
-    // Gen 8 (Switch - Tall, with BDSP bundle having Separate option)
+    // Gen 8 (Switch - Tall)
     { id: 'sword', name: 'Pokémon Sword', gen: 8, shape: 'tall', cover: 'covers/sword.jpg', prices: { loose: 28, cib: 34, new: 44 } },
     { id: 'shield', name: 'Pokémon Shield', gen: 8, shape: 'tall', cover: 'covers/shield.jpg', prices: { loose: 31, cib: 35, new: 52 } },
     { id: 'brilliant_diamond', name: 'Pokémon Brilliant Diamond', gen: 8, shape: 'tall', cover: 'covers/brilliant_diamond.jpg', prices: { loose: 35, cib: 38, new: 41 } },
     { id: 'shining_pearl', name: 'Pokémon Shining Pearl', gen: 8, shape: 'tall', cover: 'covers/shining_pearl.jpg', prices: { loose: 32, cib: 34, new: 40 } },
     { id: 'bdsp_double', name: 'BDSP Double Pack', gen: 8, shape: 'tall', cover: 'covers/bdsp_double.jpg', prices: { loose: 86, cib: 87, new: 105, separate: 77 } },
 
-    // Gen 9 (Switch - Tall, with Scarlet/Violet bundle having Separate option)
+    // Gen 9 (Switch - Tall)
     { id: 'scarlet', name: 'Pokémon Scarlet', gen: 9, shape: 'tall', cover: 'covers/scarlet.jpg', prices: { loose: 32, cib: 35, new: 40 } },
     { id: 'violet', name: 'Pokémon Violet', gen: 9, shape: 'tall', cover: 'covers/violet.jpg', prices: { loose: 38, cib: 40, new: 45 } },
     { id: 'sc_vi_double', name: 'Scarlet & Violet Double Pack', gen: 9, shape: 'tall', cover: 'covers/sc_vi_double.jpg', prices: { loose: 83, cib: 88, new: 98, separate: 70 } }
 ];
 
-// Load progress from browser storage
-let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v11')) || {};
+let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v12')) || {};
 
 function saveCollection() {
-    localStorage.setItem('pokemonTrackerDB_v11', JSON.stringify(collection));
+    localStorage.setItem('pokemonTrackerDB_v12', JSON.stringify(collection));
     updateSummary();
 }
 
@@ -99,52 +97,37 @@ function showView(viewId) {
 function updateSummary() {
     let totalItems = 0;
     let collectedItems = 0;
+    let totalValue = 0;
     const masterGrid = document.getElementById('master-grid');
     masterGrid.innerHTML = '';
 
     gamesData.forEach(game => {
-        let gameAllCollected = true;
+        let ownedConditions = [];
         
-        Object.keys(game.prices).forEach(condition => {
+        Object.entries(game.prices).forEach(([cond, price]) => {
             totalItems++;
-            const itemKey = `${game.id}_${condition}`;
+            const itemKey = `${game.id}_${cond}`;
             if (collection[itemKey]) {
                 collectedItems++;
-            } else {
-                gameAllCollected = false;
+                totalValue += price;
+                ownedConditions.push(cond.toUpperCase());
             }
         });
 
-        // Create card for master overview grid
         const card = document.createElement('div');
-        card.className = `game-card ${gameAllCollected ? 'fully-collected' : ''}`;
+        card.className = `game-card ${ownedConditions.length > 0 ? 'has-owned' : ''}`;
         card.onclick = () => loadGeneration(game.gen);
-        card.style.cursor = 'pointer';
 
-        let conditionsSummary = '';
-        Object.entries(game.prices).forEach(([cond, price]) => {
-            const itemKey = `${game.id}_${cond}`;
-            const isChecked = collection[itemKey] || false;
-            if (isChecked) {
-                conditionsSummary += `<span style="font-size: 0.75em; background: var(--mint); padding: 2px 6px; border-radius: 4px; font-weight: bold;">${cond.toUpperCase()} ✓</span> `;
-            }
-        });
-
-        if (!conditionsSummary) {
-            conditionsSummary = `<span style="font-size: 0.8em; color: #718096;">None collected yet</span>`;
-        }
+        const statusText = ownedConditions.length > 0 ? `Status: ${ownedConditions.join(', ')}` : `Status: Missing`;
 
         card.innerHTML = `
             <div class="cover-wrapper">
                 <img src="${game.cover}" alt="${game.name}" class="cover-art ${game.shape}" onerror="this.src='https://via.placeholder.com/80x100?text=No+Cover'">
-                <div class="collected-badge">COLLECTED</div>
             </div>
             <div class="game-info">
                 <h3>${game.name}</h3>
-                <div style="font-size: 0.85em; color: var(--lilac); margin-bottom: 6px; font-weight: 600;">Gen ${game.gen}</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                    ${conditionsSummary}
-                </div>
+                <div class="status-indicator">${statusText}</div>
+                <div style="font-size: 0.8em; color: var(--lilac); font-weight: 600;">Gen ${game.gen} (Click to manage)</div>
             </div>
         `;
         masterGrid.appendChild(card);
@@ -152,6 +135,7 @@ function updateSummary() {
 
     document.getElementById('collected-stat').textContent = `Items Owned: ${collectedItems}`;
     document.getElementById('missing-stat').textContent = `Items Missing: ${totalItems - collectedItems}`;
+    document.getElementById('value-stat').textContent = `Total Value: $${totalValue}`;
 }
 
 function loadGeneration(gen) {
@@ -166,12 +150,12 @@ function loadGeneration(gen) {
     genGames.forEach(game => {
         const card = document.createElement('div');
         card.className = 'game-card';
+        card.onclick = null; // Prevent bubbling click to overview
         
         let conditionsHTML = '';
         Object.entries(game.prices).forEach(([cond, price]) => {
             const itemKey = `${game.id}_${cond}`;
             const isChecked = collection[itemKey] || false;
-            
             const displayLabel = cond === 'separate' ? 'SEPARATE' : cond.toUpperCase();
             
             conditionsHTML += `
@@ -209,6 +193,8 @@ window.toggleCondition = function(itemKey, checkbox) {
     } else {
         parentItem.classList.remove('owned');
     }
+    // Update summary stats instantly on background
+    updateSummary();
 };
 
 init();
