@@ -119,32 +119,35 @@ h2, h3 {
     transition: all 0.2s ease;
 }
 
-/* Console Shape Styling for Covers */
+/* Console Shape Styling - using 'contain' so the full image is shown without cropping */
 .cover-art.square {
     width: 85px;
     height: 85px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: var(--lavender);
+    background-color: #f7f5fc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 2px;
 }
 
 .cover-art.rect {
     width: 75px;
     height: 105px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: var(--lavender);
+    background-color: #f7f5fc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 2px;
 }
 
 .cover-art.tall {
     width: 68px;
     height: 120px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: var(--lavender);
+    background-color: #f7f5fc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 2px;
 }
 
 .game-info {
