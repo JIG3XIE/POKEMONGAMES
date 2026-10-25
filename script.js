@@ -1,4 +1,4 @@
-// Database with shape property ('square' for GB/GBC/GBA/DS, 'rect' for 3DS, 'tall' for Switch)
+// Database with proper cover shapes and rounded pricing
 const gamesData = [
     // Gen 1 (Game Boy - Square)
     { id: 'red', name: 'Pokémon Red', gen: 1, shape: 'square', cover: 'covers/red.jpg', prices: { loose: 63, cib: 392 } },
@@ -58,10 +58,10 @@ const gamesData = [
 ];
 
 // Load progress from browser storage
-let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v9')) || {};
+let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v10')) || {};
 
 function saveCollection() {
-    localStorage.setItem('pokemonTrackerDB_v9', JSON.stringify(collection));
+    localStorage.setItem('pokemonTrackerDB_v10', JSON.stringify(collection));
     updateSummary();
 }
 
@@ -116,7 +116,7 @@ function updateSummary() {
             }
         });
 
-        // Display only the game name on the overview homepage if it has any unowned variants
+        // Display ONLY the game name once on the homepage if any variant is missing
         if (gameHasUnowned) {
             const li = document.createElement('li');
             li.textContent = game.name;
