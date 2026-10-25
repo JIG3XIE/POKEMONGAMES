@@ -76,11 +76,11 @@ button:hover {
 }
 
 .stat-box {
-    padding: 20px 30px;
+    padding: 20px 25px;
     border-radius: 16px;
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
-    min-width: 180px;
+    min-width: 160px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     color: var(--text-dark);
@@ -94,16 +94,13 @@ button:hover {
     background-color: var(--soft-pink);
 }
 
+#value-stat {
+    background-color: var(--golden-yellow);
+}
+
 h2, h3 {
     color: var(--lilac);
     text-align: center;
-}
-
-.subtitle {
-    text-align: center;
-    color: var(--lilac);
-    margin-bottom: 25px;
-    font-size: 0.95em;
 }
 
 .grid {
@@ -124,40 +121,15 @@ h2, h3 {
     gap: 16px;
     border-left: 6px solid var(--golden-yellow);
     transition: all 0.2s ease;
-    position: relative;
+    cursor: pointer;
 }
 
-/* Cover Wrapper with Collection Badge Overlay */
-.cover-wrapper {
-    position: relative;
-    flex-shrink: 0;
+.game-card.has-owned {
+    background-color: #f4fbf9;
+    border-left-color: var(--mint);
 }
 
-.collected-badge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(158, 217, 204, 0.88);
-    color: #1a5c4e;
-    font-weight: 800;
-    font-size: 0.7em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    padding: 4px;
-}
-
-.game-card.fully-collected .collected-badge {
-    opacity: 1;
-}
-
-/* Console Shape Styling - using contain so full image is shown without cropping */
+/* Console Shape Styling with full image contain */
 .cover-art.square {
     width: 85px;
     height: 85px;
@@ -193,10 +165,26 @@ h2, h3 {
 }
 
 .game-info h3 {
-    margin: 0 0 10px 0;
+    margin: 0 0 6px 0;
     font-size: 1.1em;
     color: var(--text-dark);
     text-align: left;
+}
+
+.status-indicator {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--lilac);
+    margin-bottom: 8px;
+    background-color: #f0edf8;
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.game-card.has-owned .status-indicator {
+    background-color: var(--mint);
+    color: #1a5c4e;
 }
 
 .conditions-list {
