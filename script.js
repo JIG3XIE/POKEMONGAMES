@@ -1,67 +1,67 @@
-// Database with local cover paths and rounded pricing
+// Database organized by Generation 1 through 9 with local cover paths and rounded pricing
 const gamesData = [
     // Gen 1
-    { id: 'red', name: 'Pokémon Red', gen: 1, cover: 'covers/red.jpg', prices: { loose: 63, cib: 392 } },[span_36](start_span)[span_36](end_span)
-    { id: 'blue', name: 'Pokémon Blue', gen: 1, cover: 'covers/blue.jpg', prices: { loose: 55, cib: 325 } },[span_37](start_span)[span_37](end_span)
-    { id: 'yellow', name: 'Pokémon Yellow', gen: 1, cover: 'covers/yellow.jpg', prices: { loose: 55, cib: 325 } },[span_38](start_span)[span_38](end_span)
+    { id: 'red', name: 'Pokémon Red', gen: 1, cover: 'covers/red.jpg', prices: { loose: 63, cib: 392 } },
+    { id: 'blue', name: 'Pokémon Blue', gen: 1, cover: 'covers/blue.jpg', prices: { loose: 55, cib: 325 } },
+    { id: 'yellow', name: 'Pokémon Yellow', gen: 1, cover: 'covers/yellow.jpg', prices: { loose: 55, cib: 325 } },
 
     // Gen 2
-    { id: 'gold', name: 'Pokémon Gold', gen: 2, cover: 'covers/gold.jpg', prices: { loose: 60, cib: 256 } },[span_39](start_span)[span_39](end_span)
-    { id: 'silver', name: 'Pokémon Silver', gen: 2, cover: 'covers/silver.jpg', prices: { loose: 49, cib: 325 } },[span_40](start_span)[span_40](end_span)
+    { id: 'gold', name: 'Pokémon Gold', gen: 2, cover: 'covers/gold.jpg', prices: { loose: 60, cib: 256 } },
+    { id: 'silver', name: 'Pokémon Silver', gen: 2, cover: 'covers/silver.jpg', prices: { loose: 49, cib: 325 } },
     { id: 'crystal', name: 'Pokémon Crystal', gen: 2, cover: 'covers/crystal.jpg', prices: { loose: 120, cib: 350 } },
 
     // Gen 3
-    { id: 'ruby', name: 'Pokémon Ruby', gen: 3, cover: 'covers/ruby.jpg', prices: { loose: 89, cib: 386 } },[span_41](start_span)[span_41](end_span)
-    { id: 'sapphire', name: 'Pokémon Sapphire', gen: 3, cover: 'covers/sapphire.jpg', prices: { loose: 81, cib: 297 } },[span_42](start_span)[span_42](end_span)
-    { id: 'emerald', name: 'Pokémon Emerald', gen: 3, cover: 'covers/emerald.jpg', prices: { loose: 231, cib: 749 } },[span_43](start_span)[span_43](end_span)
-    { id: 'firered', name: 'Pokémon FireRed', gen: 3, cover: 'covers/firered.jpg', prices: { loose: 105, cib: 350 } },[span_44](start_span)[span_44](end_span)
-    { id: 'leafgreen', name: 'Pokémon LeafGreen', gen: 3, cover: 'covers/leafgreen.jpg', prices: { loose: 100, cib: 440 } },[span_45](start_span)[span_45](end_span)
+    { id: 'ruby', name: 'Pokémon Ruby', gen: 3, cover: 'covers/ruby.jpg', prices: { loose: 89, cib: 386 } },
+    { id: 'sapphire', name: 'Pokémon Sapphire', gen: 3, cover: 'covers/sapphire.jpg', prices: { loose: 81, cib: 297 } },
+    { id: 'emerald', name: 'Pokémon Emerald', gen: 3, cover: 'covers/emerald.jpg', prices: { loose: 231, cib: 749 } },
+    { id: 'firered', name: 'Pokémon FireRed', gen: 3, cover: 'covers/firered.jpg', prices: { loose: 105, cib: 350 } },
+    { id: 'leafgreen', name: 'Pokémon LeafGreen', gen: 3, cover: 'covers/leafgreen.jpg', prices: { loose: 100, cib: 440 } },
 
     // Gen 4
-    { id: 'diamond', name: 'Pokémon Diamond', gen: 4, cover: 'covers/diamond.jpg', prices: { loose: 35, cib: 74 } },[span_46](start_span)[span_46](end_span)
-    { id: 'pearl', name: 'Pokémon Pearl', gen: 4, cover: 'covers/pearl.jpg', prices: { loose: 42, cib: 84 } },[span_47](start_span)[span_47](end_span)
-    { id: 'platinum', name: 'Pokémon Platinum', gen: 4, cover: 'covers/platinum.jpg', prices: { loose: 112, cib: 177 } },[span_48](start_span)[span_48](end_span)
-    { id: 'heartgold', name: 'Pokémon HeartGold', gen: 4, cover: 'covers/heartgold.jpg', prices: { loose: 250, cib: 493 } },[span_49](start_span)[span_49](end_span)
-    { id: 'soulsilver', name: 'Pokémon SoulSilver', gen: 4, cover: 'covers/soulsilver.jpg', prices: { loose: 145, cib: 200 } },[span_50](start_span)[span_50](end_span)
+    { id: 'diamond', name: 'Pokémon Diamond', gen: 4, cover: 'covers/diamond.jpg', prices: { loose: 35, cib: 74 } },
+    { id: 'pearl', name: 'Pokémon Pearl', gen: 4, cover: 'covers/pearl.jpg', prices: { loose: 42, cib: 84 } },
+    { id: 'platinum', name: 'Pokémon Platinum', gen: 4, cover: 'covers/platinum.jpg', prices: { loose: 112, cib: 177 } },
+    { id: 'heartgold', name: 'Pokémon HeartGold', gen: 4, cover: 'covers/heartgold.jpg', prices: { loose: 250, cib: 493 } },
+    { id: 'soulsilver', name: 'Pokémon SoulSilver', gen: 4, cover: 'covers/soulsilver.jpg', prices: { loose: 145, cib: 200 } },
 
     // Gen 5
-    { id: 'black', name: 'Pokémon Black', gen: 5, cover: 'covers/black.jpg', prices: { loose: 81, cib: 122 } },[span_51](start_span)[span_51](end_span)
-    { id: 'white', name: 'Pokémon White', gen: 5, cover: 'covers/white.jpg', prices: { loose: 76, cib: 110 } },[span_52](start_span)[span_52](end_span)
-    { id: 'black2', name: 'Pokémon Black 2', gen: 5, cover: 'covers/black2.jpg', prices: { loose: 150, cib: 210 } },[span_53](start_span)[span_53](end_span)
-    { id: 'white2', name: 'Pokémon White 2', gen: 5, cover: 'covers/white2.jpg', prices: { loose: 143, cib: 192 } },[span_54](start_span)[span_54](end_span)
+    { id: 'black', name: 'Pokémon Black', gen: 5, cover: 'covers/black.jpg', prices: { loose: 81, cib: 122 } },
+    { id: 'white', name: 'Pokémon White', gen: 5, cover: 'covers/white.jpg', prices: { loose: 76, cib: 110 } },
+    { id: 'black2', name: 'Pokémon Black 2', gen: 5, cover: 'covers/black2.jpg', prices: { loose: 150, cib: 210 } },
+    { id: 'white2', name: 'Pokémon White 2', gen: 5, cover: 'covers/white2.jpg', prices: { loose: 143, cib: 192 } },
 
     // Gen 6
-    { id: 'x', name: 'Pokémon X', gen: 6, cover: 'covers/x.jpg', prices: { loose: 34, cib: 39 } },[span_55](start_span)[span_55](end_span)
-    { id: 'y', name: 'Pokémon Y', gen: 6, cover: 'covers/y.jpg', prices: { loose: 33, cib: 40 } },[span_56](start_span)[span_56](end_span)
-    { id: 'omegaruby', name: 'Pokémon Omega Ruby', gen: 6, cover: 'covers/omegaruby.jpg', prices: { loose: 38, cib: 45 } },[span_57](start_span)[span_57](end_span)
-    { id: 'alphasapphire', name: 'Pokémon Alpha Sapphire', gen: 6, cover: 'covers/alphasapphire.jpg', prices: { loose: 36, cib: 46 } },[span_58](start_span)[span_58](end_span)
+    { id: 'x', name: 'Pokémon X', gen: 6, cover: 'covers/x.jpg', prices: { loose: 34, cib: 39 } },
+    { id: 'y', name: 'Pokémon Y', gen: 6, cover: 'covers/y.jpg', prices: { loose: 33, cib: 40 } },
+    { id: 'omegaruby', name: 'Pokémon Omega Ruby', gen: 6, cover: 'covers/omegaruby.jpg', prices: { loose: 38, cib: 45 } },
+    { id: 'alphasapphire', name: 'Pokémon Alpha Sapphire', gen: 6, cover: 'covers/alphasapphire.jpg', prices: { loose: 36, cib: 46 } },
 
     // Gen 7
-    { id: 'sun', name: 'Pokémon Sun', gen: 7, cover: 'covers/sun.jpg', prices: { loose: 18, cib: 24 } },[span_59](start_span)[span_59](end_span)
-    { id: 'moon', name: 'Pokémon Moon', gen: 7, cover: 'covers/moon.jpg', prices: { loose: 20, cib: 25 } },[span_60](start_span)[span_60](end_span)
-    { id: 'ultrasun', name: 'Pokémon Ultra Sun', gen: 7, cover: 'covers/ultrasun.jpg', prices: { loose: 43, cib: 49 } },[span_61](start_span)[span_61](end_span)
-    { id: 'ultramoon', name: 'Pokémon Ultra Moon', gen: 7, cover: 'covers/ultramoon.jpg', prices: { loose: 45, cib: 55 } },[span_62](start_span)[span_62](end_span)
-    { id: 'letsgo_pikachu', name: "Pokémon: Let's Go, Pikachu!", gen: 7, cover: 'covers/letsgo_pikachu.jpg', prices: { loose: 30, cib: 32, new: 60 } },[span_63](start_span)[span_63](end_span)
-    { id: 'letsgo_eevee', name: "Pokémon: Let's Go, Eevee!", gen: 7, cover: 'covers/letsgo_eevee.jpg', prices: { loose: 31, cib: 35, new: 60 } },[span_64](start_span)[span_64](end_span)
+    { id: 'sun', name: 'Pokémon Sun', gen: 7, cover: 'covers/sun.jpg', prices: { loose: 18, cib: 24 } },
+    { id: 'moon', name: 'Pokémon Moon', gen: 7, cover: 'covers/moon.jpg', prices: { loose: 20, cib: 25 } },
+    { id: 'ultrasun', name: 'Pokémon Ultra Sun', gen: 7, cover: 'covers/ultrasun.jpg', prices: { loose: 43, cib: 49 } },
+    { id: 'ultramoon', name: 'Pokémon Ultra Moon', gen: 7, cover: 'covers/ultramoon.jpg', prices: { loose: 45, cib: 55 } },
+    { id: 'letsgo_pikachu', name: "Pokémon: Let's Go, Pikachu!", gen: 7, cover: 'covers/letsgo_pikachu.jpg', prices: { loose: 30, cib: 32, new: 60 } },
+    { id: 'letsgo_eevee', name: "Pokémon: Let's Go, Eevee!", gen: 7, cover: 'covers/letsgo_eevee.jpg', prices: { loose: 31, cib: 35, new: 60 } },
 
     // Gen 8
-    { id: 'sword', name: 'Pokémon Sword', gen: 8, cover: 'covers/sword.jpg', prices: { loose: 28, cib: 34, new: 44 } },[span_65](start_span)[span_65](end_span)
-    { id: 'shield', name: 'Pokémon Shield', gen: 8, cover: 'covers/shield.jpg', prices: { loose: 31, cib: 35, new: 52 } },[span_66](start_span)[span_66](end_span)
-    { id: 'brilliant_diamond', name: 'Pokémon Brilliant Diamond', gen: 8, cover: 'covers/brilliant_diamond.jpg', prices: { loose: 35, cib: 38, new: 41 } },[span_67](start_span)[span_67](end_span)
-    { id: 'shining_pearl', name: 'Pokémon Shining Pearl', gen: 8, cover: 'covers/shining_pearl.jpg', prices: { loose: 32, cib: 34, new: 40 } },[span_68](start_span)[span_68](end_span)
-    { id: 'bdsp_double', name: 'BDSP Double Pack', gen: 8, cover: 'covers/bdsp_double.jpg', prices: { loose: 86, cib: 87, new: 105 } },[span_69](start_span)[span_69](end_span)
+    { id: 'sword', name: 'Pokémon Sword', gen: 8, cover: 'covers/sword.jpg', prices: { loose: 28, cib: 34, new: 44 } },
+    { id: 'shield', name: 'Pokémon Shield', gen: 8, cover: 'covers/shield.jpg', prices: { loose: 31, cib: 35, new: 52 } },
+    { id: 'brilliant_diamond', name: 'Pokémon Brilliant Diamond', gen: 8, cover: 'covers/brilliant_diamond.jpg', prices: { loose: 35, cib: 38, new: 41 } },
+    { id: 'shining_pearl', name: 'Pokémon Shining Pearl', gen: 8, cover: 'covers/shining_pearl.jpg', prices: { loose: 32, cib: 34, new: 40 } },
+    { id: 'bdsp_double', name: 'BDSP Double Pack', gen: 8, cover: 'covers/bdsp_double.jpg', prices: { loose: 86, cib: 87, new: 105 } },
 
     // Gen 9
-    { id: 'scarlet', name: 'Pokémon Scarlet', gen: 9, cover: 'covers/scarlet.jpg', prices: { loose: 32, cib: 35, new: 40 } },[span_70](start_span)[span_70](end_span)[span_71](start_span)[span_71](end_span)
-    { id: 'violet', name: 'Pokémon Violet', gen: 9, cover: 'covers/violet.jpg', prices: { loose: 38, cib: 40, new: 45 } },[span_72](start_span)[span_72](end_span)
-    { id: 'sc_vi_double', name: 'Scarlet & Violet Double Pack', gen: 9, cover: 'covers/sc_vi_double.jpg', prices: { loose: 83, cib: 88, new: 98 } }[span_73](start_span)[span_73](end_span)
+    { id: 'scarlet', name: 'Pokémon Scarlet', gen: 9, cover: 'covers/scarlet.jpg', prices: { loose: 32, cib: 35, new: 40 } },
+    { id: 'violet', name: 'Pokémon Violet', gen: 9, cover: 'covers/violet.jpg', prices: { loose: 38, cib: 40, new: 45 } },
+    { id: 'sc_vi_double', name: 'Scarlet & Violet Double Pack', gen: 9, cover: 'covers/sc_vi_double.jpg', prices: { loose: 83, cib: 88, new: 98 } }
 ];
 
 // Load progress from browser storage
-let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v6')) || {};
+let collection = JSON.parse(localStorage.getItem('pokemonTrackerDB_v7')) || {};
 
 function saveCollection() {
-    localStorage.setItem('pokemonTrackerDB_v6', JSON.stringify(collection));
+    localStorage.setItem('pokemonTrackerDB_v7', JSON.stringify(collection));
     updateSummary();
 }
 
