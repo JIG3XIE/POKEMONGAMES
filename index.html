@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Collection Tracker</title>
+    <title>Pokémon Game Tracker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Pokémon Collection Tracker</h1>
+        <h1>Pokémon Game Tracker</h1>
         <nav>
             <button id="home-btn">Overview</button>
             <div id="gen-buttons"></div>
@@ -16,19 +16,19 @@
     </header>
     
     <main>
-        <!-- Homepage Overview Section -->
+        <!-- Overview Homepage -->
         <section id="summary-view">
-            <h2>Collection Progress</h2>
+            <h2>Collection Summary</h2>
             <div class="stats">
                 <div class="stat-box" id="collected-stat">Bought: 0</div>
                 <div class="stat-box" id="missing-stat">Missing: 0</div>
             </div>
             
-            <h3>Remaining Targets</h3>
+            <h3>Remaining Games to Collect</h3>
             <ul id="missing-list"></ul>
         </section>
 
-        <!-- Generation Checklist Section -->
+        <!-- Generation Detail View -->
         <section id="gen-view" class="hidden">
             <h2 id="current-gen-title">Generation</h2>
             <div id="games-list" class="grid"></div>
